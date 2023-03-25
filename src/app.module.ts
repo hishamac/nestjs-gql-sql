@@ -5,9 +5,10 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { join } from 'path';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { Pet } from './pets/pet.entitiy';
+import { Pet } from './pets/entities/pet.entitiy';
 import { PetsModule } from './pets/pets.module';
 import { OwnersModule } from './owners/owners.module';
+import { Owner } from './owners/entities/owner.entity';
 
 @Module({
   imports: [
@@ -18,7 +19,7 @@ import { OwnersModule } from './owners/owners.module';
     TypeOrmModule.forRoot({
       type:'sqlite',
       database:':memory:',
-      entities:[Pet],
+      entities:[Pet,Owner],
       synchronize: true,
     }),
     PetsModule,
